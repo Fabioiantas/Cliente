@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/Documents/NetBeansProjects/Cliente/src/email/MailApp.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/Cliente/src/email/ResponderEmail.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/Cliente/src/planilha/Planilha.java</file>
-            <file>file:/E:/Documents/NetBeansProjects/Cliente/src/email/CaixaEntrada.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/FrameClient.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/ListennerServer.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/UDPClient.java</file>
         </group>
     </open-files>
 </project-private>
