@@ -14,6 +14,7 @@ import java.security.GeneralSecurityException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -64,6 +65,10 @@ public class ListennerServer extends Thread {
                     frame.SetStatus(false);
                     System.out.println("5Client receive>"+cont2+":"+servmsg.substring(0, servmsg.indexOf("#")));
                     cont2++;
+                }else if("e1".equals(servmsg.substring(0, servmsg.indexOf("#")))){
+                    frame.SetDebug("action=ReceiveMessage / MessageofServer: "+servmsg);
+                    frame.SetStatus(false);
+                    JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos.");
                 }
             } catch (IOException ex) {
                 Logger.getLogger(ListennerServer.class.getName()).log(Level.SEVERE, null, ex);

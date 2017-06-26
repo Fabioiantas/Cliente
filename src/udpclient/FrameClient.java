@@ -39,12 +39,14 @@ public class FrameClient extends javax.swing.JFrame{
     int cont2 = 0;
     Server server = new Server();
     LocalUser localclient = new LocalUser();
+    EmailSetup emailSetup;
     
     public FrameClient() {
         send = new SendMessage();
         SetConnection(false);
         initComponents();
         TextStatus.setText("OFFLINE");
+        emailSetup = new EmailSetup();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -78,6 +80,10 @@ public class FrameClient extends javax.swing.JFrame{
         TextMsg = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -337,6 +343,28 @@ public class FrameClient extends javax.swing.JFrame{
                         .addContainerGap())))
         );
 
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("E-mail");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Setup");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -351,6 +379,19 @@ public class FrameClient extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
+    public void SetEmailSetup(String email, String senha, String ipSmtp, String ipimap, int portSmtp, int portImap){
+        
+        emailSetup.setEmail(email);
+        emailSetup.setSenha(senha);
+        emailSetup.setIp_smtp(ipSmtp);
+        emailSetup.setIp_imap(ipimap);
+        emailSetup.setSmtp_port(portSmtp);
+        emailSetup.setImap_port(portImap);
+    }
+    
+    public EmailSetup GetEmailSetup (){
+        return emailSetup;
+    }
     public void SetDebug(String msg){
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         Date hora = Calendar.getInstance().getTime(); // Ou qualquer outra forma que tem
@@ -367,7 +408,7 @@ public class FrameClient extends javax.swing.JFrame{
     private void BtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtLoginActionPerformed
         Integer confirmation;
         String resposta;
-        SetDebug("action=login / MessagetoSever: 1#"+TextUser.getText().trim());
+        SetDebug("action=login / MessagetoSever: 1#"+TextUser.getText().trim()+"#"+TextPassword.getText().trim());
         if(!connection){
             try {
                 server.setIp(TextIp.getText());
@@ -441,9 +482,10 @@ public class FrameClient extends javax.swing.JFrame{
     }//GEN-LAST:event_TableUserMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
         if (getStatus()){
             try { 
-                CaixaEntrada caixa = new CaixaEntrada();
+                CaixaEntrada caixa = new CaixaEntrada(emailSetup);
                 caixa.setVisible(true);
             } catch (MessagingException ex) {
                 Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -455,6 +497,15 @@ public class FrameClient extends javax.swing.JFrame{
         }else
             JOptionPane.showMessageDialog(null, "Cliente OFFLINE!");
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        FrameSetup setup =  new FrameSetup(emailSetup);
+        setup.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
     
     public void AddRow (String msg){
         if(msg != null){
@@ -555,6 +606,10 @@ public class FrameClient extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -247,7 +247,6 @@ public class ResponderEmail extends javax.swing.JFrame {
                 e.re = false;
                 //enviar uma mensagem para o servidor para acrescentar um email respondido
                 
-                
                 this.dispose();
             } catch (Exception ex) {
                 ex.printStackTrace();

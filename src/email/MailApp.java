@@ -36,12 +36,12 @@ public class MailApp {
     private Message[] mensagens;
     private Session session;
     
-    private String login; // = "distribuidos.ads@gmail.com";
-    private String senha;// = "2017sistemas";
-    private String hostSmtp;// = "smtp.gmail.com";
-    private String hostImap;// = "imap.gmail.com";
-    private int portaSmtp;// = 587;
-    private int portaImap;// = 993;
+    private String login = "distribuidos.ads@gmail.com";
+    private String senha = "2017sistemas";
+    private String hostSmtp = "smtp.gmail.com";
+    private String hostImap = "imap.gmail.com";
+    private int portaSmtp = 587;
+    private int portaImap = 993;
     
     public MailApp(){        
     }

@@ -16,6 +16,7 @@ import javax.mail.event.MessageCountEvent;
 import javax.mail.event.MessageCountListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import udpclient.EmailSetup;
 
 /**
  *
@@ -25,15 +26,25 @@ public class CaixaEntrada extends javax.swing.JFrame {
     DefaultTableModel dtmMensagens;
     MailApp mail;
     public boolean re;
+    udpclient.EmailSetup setup = new EmailSetup();
     /**
      * Creates new form NewJFrame
      */
-    public CaixaEntrada() throws MessagingException, IOException, GeneralSecurityException {
+    public CaixaEntrada(udpclient.EmailSetup setup) throws MessagingException, IOException, GeneralSecurityException {
         initComponents();
         re=false;
         this.setLocationRelativeTo(null);
-        mail = new MailApp("distribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 587, 993);
-        //mail = new MailApp("", "senha", "192.168.25.17", "192.168.25.17", 22021, 22141);
+        this.setup = setup;        
+        //Gmail
+        //if("G".equals(setup.getTipo()))
+        //mail = new MailApp("istribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 465, 993);
+        //mail = new MailApp("distribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 587, 993);
+       mail = new MailApp(this.setup.getEmail(), 
+                           this.setup.getSenha(), 
+                           this.setup.getIp_smtp(), 
+                           this.setup.getIp_imap(), 
+                           this.setup.getSmtp_port(), 
+                           this.setup.getImap_port());
 
         //mail = new MailApp();
         dtmMensagens = (DefaultTableModel) jTable1.getModel();
@@ -270,7 +281,7 @@ public class CaixaEntrada extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new CaixaEntrada().setVisible(true);
+                    new CaixaEntrada(null).setVisible(true);
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
                 } catch (IOException ex) {
