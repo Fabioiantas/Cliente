@@ -17,6 +17,7 @@ import javax.mail.event.MessageCountListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import udpclient.EmailSetup;
+import udpclient.FrameClient;
 
 /**
  *
@@ -27,18 +28,23 @@ public class CaixaEntrada extends javax.swing.JFrame {
     MailApp mail;
     public boolean re;
     udpclient.EmailSetup setup = new EmailSetup();
+    FrameClient frame;
     /**
      * Creates new form NewJFrame
      */
-    public CaixaEntrada(udpclient.EmailSetup setup) throws MessagingException, IOException, GeneralSecurityException {
+    public CaixaEntrada(udpclient.EmailSetup setup,FrameClient frame) throws MessagingException, IOException, GeneralSecurityException {
         initComponents();
         re=false;
         this.setLocationRelativeTo(null);
         this.setup = setup;        
-        //Gmail
-        //if("G".equals(setup.getTipo()))
-        //mail = new MailApp("istribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 465, 993);
-        //mail = new MailApp("distribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 587, 993);
+        this.frame = frame;
+       //mail = new MailApp("distribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 587, 993);
+       /* System.out.println(this.setup.getEmail()+"-"+ 
+                           this.setup.getSenha()+"-"+ 
+                           this.setup.getIp_smtp()+ "-"+
+                           this.setup.getIp_imap()+ "-"+
+                           this.setup.getSmtp_port()+"-"+ 
+                           this.setup.getImap_port());*/
        mail = new MailApp(this.setup.getEmail(), 
                            this.setup.getSenha(), 
                            this.setup.getIp_smtp(), 
@@ -225,7 +231,7 @@ public class CaixaEntrada extends javax.swing.JFrame {
             try {
                 if(!re){
                     re = true;
-                    ResponderEmail responder = new ResponderEmail((mail.getMensagens()[r]),mail,this);
+                    ResponderEmail responder = new ResponderEmail((mail.getMensagens()[r]),mail,this,frame);
                     responder.setVisible(true);
                 }
                 
@@ -281,7 +287,7 @@ public class CaixaEntrada extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new CaixaEntrada(null).setVisible(true);
+                    new CaixaEntrada(null,null).setVisible(true);
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
                 } catch (IOException ex) {

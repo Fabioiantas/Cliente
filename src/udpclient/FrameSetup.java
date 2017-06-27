@@ -25,8 +25,8 @@ public class FrameSetup extends javax.swing.JFrame {
     public void Config(){
         TextEmail.setText("distribuidos.ads@gmail.com");
         TextPwdEmail.setText("2017sistemas");
-        TextIpSmtp.setText("smtp.google.com");
-        TextIpImap.setText("imap.google.com");
+        TextIpSmtp.setText("smtp.gmail.com");
+        TextIpImap.setText("imap.gmail.com");
         TextPortSmtp.setText(Integer.toString(587));
         TextPortImap.setText(Integer.toString(993));
     }
@@ -209,7 +209,7 @@ public class FrameSetup extends javax.swing.JFrame {
         setup.setSenha(TextPwdEmail.getText().trim());
         setup.setIp_smtp(TextIpSmtp.getText().trim());
         setup.setIp_imap(TextIpImap.getText().trim());
-        setup.setSmtp_port(Integer.parseInt(TextPortSmtp.getText()));
+        setup.setSmtp_port(Integer.parseInt(TextPortSmtp.getText().trim()));
         setup.setImap_port(Integer.parseInt(TextPortImap.getText().trim()));
         if (RdLocal.isSelected())
             setup.setTipo("L");

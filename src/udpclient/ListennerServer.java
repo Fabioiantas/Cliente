@@ -69,6 +69,10 @@ public class ListennerServer extends Thread {
                     frame.SetDebug("action=ReceiveMessage / MessageofServer: "+servmsg);
                     frame.SetStatus(false);
                     JOptionPane.showMessageDialog(null, "Usuário ou Senha Inválidos.");
+                }else if("e2".equals(servmsg.substring(0, servmsg.indexOf("#")))){
+                    frame.SetDebug("action=ReceiveMessage / MessageofServer: "+servmsg);
+                    frame.SetStatus(false);
+                    JOptionPane.showMessageDialog(null, "Usuário Online!");
                 }
             } catch (IOException ex) {
                 Logger.getLogger(ListennerServer.class.getName()).log(Level.SEVERE, null, ex);

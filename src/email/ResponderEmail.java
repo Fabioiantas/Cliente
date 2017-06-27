@@ -23,6 +23,8 @@ import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import planilha.Planilha;
 import sun.misc.IOUtils;
+import udpclient.FrameClient;
+import udpclient.SendMessage;
 
 /**
  *
@@ -33,16 +35,17 @@ public class ResponderEmail extends javax.swing.JFrame {
     MailApp mail;
     CaixaEntrada e;
     File arquivo;
-    
+    udpclient.FrameClient frame = new FrameClient();
     /**
      * Creates new form ResponderEmail
      message*/
-    public ResponderEmail(Message mensagem, MailApp mail, CaixaEntrada e) throws MessagingException {
+    public ResponderEmail(Message mensagem, MailApp mail, CaixaEntrada e,udpclient.FrameClient frame) throws MessagingException {
         initComponents();
         this.setLocationRelativeTo(null);
         this.mail=mail;
         this.e=e;
         this.mensagem=mensagem;
+        this.frame = frame;
         File arquivo;
         
         txtAssunto.setText(mensagem.getSubject());
@@ -237,16 +240,14 @@ public class ResponderEmail extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtResposta.getText().trim().equals("") || txtResposta.getText()==null ) {
             JOptionPane.showMessageDialog(this,"Mesagem vazia!", "Atenção", JOptionPane.WARNING_MESSAGE);
-            
         } else {
             try {
                 mail.responderEmail(mensagem, txtResposta.getText().trim());
                 JOptionPane.showMessageDialog(this,"E-mail enviado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                
                 e.atualizar();
                 e.re = false;
                 //enviar uma mensagem para o servidor para acrescentar um email respondido
-                
+                this.frame.Enviar(txtDe.getText().trim(), txtConteudo.getText().trim());
                 this.dispose();
             } catch (Exception ex) {
                 ex.printStackTrace();

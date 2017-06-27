@@ -21,6 +21,7 @@ import javax.mail.MessagingException;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 @SuppressWarnings("unchecked")
 /*
@@ -388,9 +389,39 @@ public class FrameClient extends javax.swing.JFrame{
         emailSetup.setSmtp_port(portSmtp);
         emailSetup.setImap_port(portImap);
     }
+
+    public String GetIp(){
+        return TextIp.getText().trim();
+    }
+    public Integer GetPort(){
+        return Integer.parseInt(TextPort.getText().trim());
+    }
+    public JTextField getTextIp() {
+        return TextIp;
+    }
+
+    public void setTextIp(JTextField TextIp) {
+        this.TextIp = TextIp;
+    }
+
+    public JTextField getTextPort() {
+        return TextPort;
+    }
+
+    public void setTextPort(JTextField TextPort) {
+        this.TextPort = TextPort;
+    }
     
     public EmailSetup GetEmailSetup (){
         return emailSetup;
+    }
+    
+    public void Enviar(String de, String conteudo){
+        try {
+            send.Send("6#"+de+"#"+conteudo, TextIp.getText().trim(), Integer.parseInt(TextPort.getText().trim()), this);
+            } catch (IOException ex) {
+                Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
     public void SetDebug(String msg){
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
@@ -466,7 +497,7 @@ public class FrameClient extends javax.swing.JFrame{
             Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BtSendActionPerformed
-
+    
     private void TableUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableUserMouseClicked
         if(TableUser.getRowCount() > 0){
             if(!"Todos".equals(TableUser.getValueAt(TableUser.getSelectedRow(), 0).toString())){
@@ -485,7 +516,7 @@ public class FrameClient extends javax.swing.JFrame{
 
         if (getStatus()){
             try { 
-                CaixaEntrada caixa = new CaixaEntrada(emailSetup);
+                CaixaEntrada caixa = new CaixaEntrada(emailSetup,this);
                 caixa.setVisible(true);
             } catch (MessagingException ex) {
                 Logger.getLogger(FrameClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -622,118 +653,3 @@ public class FrameClient extends javax.swing.JFrame{
     // End of variables declaration//GEN-END:variables
 
 }
-/*public void AddRow(String text){
-        String protocol = new String(text.substring(2, text.length()));
-        DefaultTableModel model = (DefaultTableModel)TableUser.getModel();
-        DefaultTableModel model2 = (DefaultTableModel)TableUser.getModel();
-        int finalposition = 0;
-        int initialposition = 0;
-        int cont = 0;
-        String ip = "";
-        String port = "";
-        String user = "";
-        for (int i = 0; i < TableUser.getRowCount(); i++) {
-            model2.removeRow(i);
-        }
-        TableUser.setModel(model2);
-        for (int i = 0; i < protocol.length(); i++) {
-            if('#' == protocol.charAt(i)){
-                if (cont == 0){
-                    if (protocol.substring(finalposition, i).indexOf("#") != -1){
-                        ip = protocol.substring(finalposition, i).substring(1);
-                    }else{
-                        ip = protocol.substring(finalposition, i);
-                     }
-                    finalposition = i;
-                    cont++;
-                }else if (cont == 1){
-                    port = protocol.substring(finalposition + 1, i);
-                    finalposition = i;
-                    cont++;
-                }else if (cont == 2){
-                    user = protocol.substring(finalposition + 1, i);
-                    finalposition = i;
-                    cont = 0;
-                    if(!user.equals(TextUser.getText().trim())){
-                        model.addRow(new String[]{user,ip,port});
-                        TableUser.setModel(model);
-                    }    
-                }
-            }
-        }
-    }
- public Object[][] PartitionProtocol(String text){
-        String userlist="";
-        String ip = "";
-        String port = "";
-        String username = "";
-        int position = 0;
-        int finalposition = 0;
-        int rowcount = 0;
-        int rownumber=0;
-        int cont = 0;
-        Object[][] userlista;
-        String textlist = new String(text.substring(2, text.length()));
-        for(int i = 0; i< textlist.length(); i++){
-            if(textlist.charAt(i) == '#'){
-                cont++;
-            }
-            if(cont == 3){
-                rownumber++;
-                cont = 0;
-            }
-        }
-        if (rownumber != 0){
-            userlista = new Object[rownumber][3];
-            for (int i = 0; i < textlist.length(); i++) {
-                if(textlist.charAt(i) == '#'){
-                    switch (position) {
-                        case 0:
-                            if (textlist.substring(finalposition, i).indexOf("#") != -1){
-                                userlista[rowcount][0] = textlist.substring(finalposition, i).substring(1);
-                            }else{
-                                userlista[rowcount][0] = textlist.substring(finalposition, i);
-                            }
-                            finalposition = i;
-                            position++;
-                            break;
-                        case 1:
-                            port = textlist.substring(finalposition, i);
-                            userlista[rowcount][1] = textlist.substring(finalposition + 1, i);
-                            finalposition = i;
-                            position++;
-                            break;
-                        case 2:
-                            username = textlist.substring(finalposition + 1, i);
-                            userlista[rowcount][2] = textlist.substring(finalposition +1 , i);
-                            finalposition = i;
-                            position++;
-                            break;
-                        default:
-                            break;
-                    }
-                    if (position == 3){
-                        position = 0; 
-                        userlist="";
-                        rowcount++;
-                    }else{
-                        userlist = userlist+textlist.charAt(i);
-                    }
-                }else{
-                userlist = userlist+textlist.charAt(i);
-                }
-            }
-        }else{
-            userlista = null;
-        } 
-        for (int i = 0; i < userlista.length; i++) {
-               // if (TextUser.getText().equals(userlista[i][2].toString())){
-                    //userlista[i][0] = null;
-                    //userlista[i][1] = null;
-                    //userlista[i][2] = null;
-                //}
-            }
-        return userlista;
-    }
-
-*/
