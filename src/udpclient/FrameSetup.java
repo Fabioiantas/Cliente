@@ -18,17 +18,18 @@ public class FrameSetup extends javax.swing.JFrame {
     public FrameSetup(EmailSetup setup) {
         initComponents();
         this.setup = setup;
-        Config();
-        //SetSetup();
+        //Config();
+        SetSetup();
     }
     
     public void Config(){
-        TextEmail.setText("distribuidos.ads@gmail.com");
-        TextPwdEmail.setText("2017sistemas");
-        TextIpSmtp.setText("smtp.gmail.com");
-        TextIpImap.setText("imap.gmail.com");
-        TextPortSmtp.setText(Integer.toString(587));
-        TextPortImap.setText(Integer.toString(993));
+        //mail = new MailApp("email1@sdistribuidos.com", "senha1","10.20.1.230","10.20.1.230", 22031, 22151);
+        TextEmail.setText("email1@sdistribuidos.com");
+        TextPwdEmail.setText("senha1");
+        TextIpSmtp.setText("00.00.00.00");
+        TextIpImap.setText("00.00.00.00");
+        TextPortSmtp.setText(Integer.toString(22031));
+        TextPortImap.setText(Integer.toString(22151));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,12 +62,12 @@ public class FrameSetup extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        TextEmail.setText("distribuidos.ads@gmail.com");
+        TextEmail.setText("email1@sdistribuidos.com.br");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Configurações de E-mail");
 
-        TextPwdEmail.setText("2017sistemas");
+        TextPwdEmail.setText("senha1");
 
         jLabel2.setText("E-mail");
 
@@ -74,17 +75,22 @@ public class FrameSetup extends javax.swing.JFrame {
 
         jLabel4.setText("IP SMTP");
 
-        TextIpSmtp.setText("smtp.gmail.com");
+        TextIpSmtp.setText("10.20.");
 
         jLabel5.setText("IP IMAP");
 
-        TextIpImap.setText("imap.gmail.com");
+        TextIpImap.setText("10.20.");
+        TextIpImap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextIpImapActionPerformed(evt);
+            }
+        });
 
         TextPortSmtp.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TextPortSmtp.setText("587");
+        TextPortSmtp.setText("22");
 
         TextPortImap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        TextPortImap.setText("993");
+        TextPortImap.setText("22");
 
         jLabel6.setText("Port SMTP");
 
@@ -190,35 +196,31 @@ public class FrameSetup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
    
-    public void SetSetup(){
-        if(!"".equals(setup.getEmail()) || setup.getEmail() != null){
-            TextEmail.setText(setup.getEmail());
-            TextPwdEmail.setText(setup.getSenha());
-            TextIpSmtp.setText(setup.getIp_smtp());
-            TextIpImap.setText(setup.getIp_imap());
-            TextPortSmtp.setText(Integer.toString(setup.getSmtp_port()));
-            TextPortImap.setText(Integer.toString(setup.getImap_port()));
-            if("L".equals(setup.getTipo()))
-                RdLocal.setSelected(true);
-            else if ("G".equals(setup.getTipo()))
-                RdGmail.setSelected(true);
-        }    
-    }
+    public void SetSetup(){          
+        if(!"".equals(this.setup.getEmail()) || this.setup.getEmail() != null){
+            TextEmail.setText(this.setup.getEmail());
+            TextPwdEmail.setText(this.setup.getSenha());
+            TextIpSmtp.setText(this.setup.getIp_smtp());
+            TextIpImap.setText(this.setup.getIp_imap());
+            TextPortSmtp.setText(Integer.toString(this.setup.getSmtp_port()));
+            TextPortImap.setText(Integer.toString(this.setup.getImap_port()));
+        }
+     }
     private void BtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSalvarActionPerformed
-        setup.setEmail(TextEmail.getText().trim());
-        setup.setSenha(TextPwdEmail.getText().trim());
-        setup.setIp_smtp(TextIpSmtp.getText().trim());
-        setup.setIp_imap(TextIpImap.getText().trim());
-        setup.setSmtp_port(Integer.parseInt(TextPortSmtp.getText().trim()));
-        setup.setImap_port(Integer.parseInt(TextPortImap.getText().trim()));
-        if (RdLocal.isSelected())
-            setup.setTipo("L");
-        else if(RdGmail.isSelected())
-            setup.setTipo("G");
+        this.setup.setEmail(TextEmail.getText().trim());
+        this.setup.setSenha(TextPwdEmail.getText().trim());
+        this.setup.setIp_smtp(TextIpSmtp.getText().trim());
+        this.setup.setIp_imap(TextIpImap.getText().trim());
+        this.setup.setSmtp_port(Integer.parseInt(TextPortSmtp.getText().trim()));
+        this.setup.setImap_port(Integer.parseInt(TextPortImap.getText().trim()));
         JOptionPane.showMessageDialog(null, "Salvo!");
         this.dispose();
         
     }//GEN-LAST:event_BtSalvarActionPerformed
+
+    private void TextIpImapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextIpImapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextIpImapActionPerformed
 
     /**
      * @param args the command line arguments

@@ -63,7 +63,8 @@ public class ListennerServer extends Thread {
                     frame.SetChat(msgReceive[1], msgReceive[2], msgReceive[3]);
                 }else if("5".equals(servmsg.substring(0, servmsg.indexOf("#")))){
                     frame.SetStatus(false);
-                    System.out.println("5Client receive>"+cont2+":"+servmsg.substring(0, servmsg.indexOf("#")));
+                    isActive = false;
+                    System.out.println("5Client receive>"+":"+servmsg.substring(0, servmsg.indexOf("#")));
                     cont2++;
                 }else if("e1".equals(servmsg.substring(0, servmsg.indexOf("#")))){
                     frame.SetDebug("action=ReceiveMessage / MessageofServer: "+servmsg);
@@ -80,5 +81,8 @@ public class ListennerServer extends Thread {
         }while(isActive);
         System.out.println("saiu thread");
         this.interrupt();
+        frame.CleanTable();
+        JOptionPane.showMessageDialog(null, "Servidor Desconectou você");
+        frame.dispose();
     }
 }

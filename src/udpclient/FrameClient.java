@@ -469,7 +469,7 @@ public class FrameClient extends javax.swing.JFrame{
                 System.out.println("client send>"+cont2+": "+"5#");
                 new ListennerServer(null, this).setIsActive(false);
                 cont2++;
-                this.dispose();
+               // this.dispose();
             }catch (IOException ex) {
                 SetDebug(ex.getMessage());
             }   

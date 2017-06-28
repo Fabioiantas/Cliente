@@ -21,7 +21,6 @@ import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
-import planilha.Planilha;
 import sun.misc.IOUtils;
 import udpclient.FrameClient;
 import udpclient.SendMessage;

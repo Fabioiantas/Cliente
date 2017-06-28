@@ -3,19 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/FrameClient.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/email/MailApp.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/SendTo.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/ListennerServer.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/email/CaixaEntrada.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/SendMessage.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/FrameSetup.java</file>
+            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/EmailSetup.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/UDPClient.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/LocalUser.java</file>
             <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/email/ResponderEmail.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/planilha/TesteEnviarDadosPlanilha.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/FrameClient.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/email/MailApp.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/SendTo.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/udpclient/EmailSetup.java</file>
-            <file>file:/C:/Users/Fabio/Documents/NetBeansProjects/Cliente/src/planilha/Planilha.java</file>
         </group>
     </open-files>
 </project-private>
