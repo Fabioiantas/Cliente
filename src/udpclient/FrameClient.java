@@ -491,6 +491,7 @@ public class FrameClient extends javax.swing.JFrame{
                          ,server.getIp()
                          ,server.getPort()
                          ,this);
+                TextMsg.setText("");
             }else
                 JOptionPane.showMessageDialog(null, "Selecione o Destino!");
         } catch (IOException ex) {
@@ -513,9 +514,10 @@ public class FrameClient extends javax.swing.JFrame{
     }//GEN-LAST:event_TableUserMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        SetDebug("action=Start Email / Config: "+emailSetup.getEmail()+"%"+emailSetup.getSenha()+"%"+emailSetup.getIp_smtp()+"%"+emailSetup.getIp_imap()+"%"+emailSetup.getSmtp_port()+"%"+emailSetup.getImap_port());
         if (getStatus()){
             try { 
+                SetDebug("");
                 CaixaEntrada caixa = new CaixaEntrada(emailSetup,this);
                 caixa.setVisible(true);
             } catch (MessagingException ex) {

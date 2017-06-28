@@ -74,7 +74,7 @@ public class MailApp {
         
         //#########necessário caso for usar gmail#################
         
-       /* String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        /*String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
         props.setProperty("mail.imap.socketFactory.class", SSL_FACTORY);
         props.setProperty("mail.imap.socketFactory.fallback", "false");
         props.setProperty("mail.imap.socketFactory.port", String.valueOf(getPortaImap()));

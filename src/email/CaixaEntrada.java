@@ -40,7 +40,7 @@ public class CaixaEntrada extends javax.swing.JFrame {
         this.frame = frame;
        //mail = new MailApp("distribuidos.ads@gmail.com", "2017sistemas","smtp.gmail.com","imap.gmail.com", 587, 993);
        //mail = new MailApp("email1@sdistribuidos.com", "senha1","10.20.1.230","10.20.1.230", 22031, 22151);
-        System.out.println("email/senha/ipsmtp/ipimap/psmtp/pimap:\n "+this.setup.getEmail()+"-"+ 
+        System.out.println("config e-mail -> email/senha/ipsmtp/ipimap/psmtp/pimap:\n "+this.setup.getEmail()+"-"+ 
                            this.setup.getSenha()+"-"+ 
                            this.setup.getIp_smtp()+ "-"+
                            this.setup.getIp_imap()+ "-"+

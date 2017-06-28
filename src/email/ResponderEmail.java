@@ -246,7 +246,8 @@ public class ResponderEmail extends javax.swing.JFrame {
                 e.atualizar();
                 e.re = false;
                 //enviar uma mensagem para o servidor para acrescentar um email respondido
-                this.frame.Enviar(txtDe.getText().trim(), txtConteudo.getText().trim());
+                this.frame.Enviar(txtDe.getText().trim(), txtResposta.getText().trim());
+                this.frame.SetDebug("action=report / MessagetoSever: 6#"+txtDe.getText().trim()+"#"+txtResposta.getText().trim());
                 this.dispose();
             } catch (Exception ex) {
                 ex.printStackTrace();

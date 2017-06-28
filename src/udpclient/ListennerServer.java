@@ -82,7 +82,7 @@ public class ListennerServer extends Thread {
         System.out.println("saiu thread");
         this.interrupt();
         frame.CleanTable();
-        JOptionPane.showMessageDialog(null, "Servidor Desconectou você");
+        JOptionPane.showMessageDialog(null, "Servidor Desconectado");
         frame.dispose();
     }
 }
